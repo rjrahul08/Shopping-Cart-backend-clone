@@ -57,6 +57,7 @@ public class ProductServiceImpl implements ProductService {
         return productResponseDtos;
     }
 
+    @Override
     public List<ProductResponseDto> getAllProductByStatus(ProductStatus productStatus){
         List<Product> products = productRepository.findAllByProductStatus(productStatus);
         List<ProductResponseDto> productResponseDtos = new ArrayList<>();
@@ -66,5 +67,15 @@ public class ProductServiceImpl implements ProductService {
             productResponseDtos.add(productResponseDto);
         }
         return productResponseDtos;
+    }
+
+
+    @Override
+    public ProductResponseDto updateProductCategory(ProductRequestDto productRequestDto){
+        Product product = ProductConverter.productRequestDtoToProduct(productRequestDto);
+        product.setProductCategory(productRequestDto.getProductCategory());
+        productRepository.save(product);
+        ProductResponseDto productResponseDto = ProductConverter.productToProductResponseDto(product);
+        return productResponseDto;
     }
 }

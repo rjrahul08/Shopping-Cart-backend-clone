@@ -45,4 +45,9 @@ public class CustomerServiceImpl implements CustomerService {
         return customerResponseDto;
     }
 
+    public CustomerResponseDto findByMobNo(String mobNo){
+        Customer customer = customerRepository.findByMobNo(mobNo);
+        CustomerResponseDto customerResponseDto = CustomerConverter.customerToCustomerResponseDto(customer);
+        return customerResponseDto;
+    }
 }
