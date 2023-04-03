@@ -51,5 +51,16 @@ public class CustomerController {
         return customerResponseDto;
     }
 
+    @GetMapping("/get/{mobNo}")
+    public ResponseEntity getCustomerByMobileNo(@PathVariable("mobNo") String mobNo){
+        CustomerResponseDto customerResponseDto;
+        try {
+            customerResponseDto = customerService.findByMobNo(mobNo);
+        }
+        catch (Exception e){
+            return new ResponseEntity(e.getMessage(), HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity(customerResponseDto,HttpStatus.ACCEPTED);
+    }
 
 }

@@ -9,4 +9,6 @@ public interface CustomerService {
     CustomerResponseDto getCustomerById(int id);
 
     CustomerResponseDto findByEmail(String email);
+
+    CustomerResponseDto findByMobNo(String mobNo);
 }

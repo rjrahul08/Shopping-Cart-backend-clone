@@ -42,4 +42,15 @@ public class ProductController {
         List<ProductResponseDto> productResponseDtos = productResponseDtos = productService.getAllProductByStatus(productStatus);
         return productResponseDtos;
     }
+    @PutMapping("/update_productCategory")
+    public ResponseEntity updateProductCategory(@RequestBody ProductRequestDto productRequestDto){
+        ProductResponseDto productResponseDto;
+        try{
+            productResponseDto = productService.updateProductCategory(productRequestDto);
+        }
+        catch (Exception e){
+            return new ResponseEntity(e.getMessage(),HttpStatus.NOT_ACCEPTABLE);
+        }
+        return new ResponseEntity(productResponseDto,HttpStatus.ACCEPTED);
+    }
 }

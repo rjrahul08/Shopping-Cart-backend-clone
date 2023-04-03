@@ -15,4 +15,6 @@ public interface ProductService {
      List<ProductResponseDto> getAllProductByCategory(ProductCategory productCategory);
 
     List<ProductResponseDto> getAllProductByStatus(ProductStatus productStatus);
+
+    ProductResponseDto updateProductCategory(ProductRequestDto productRequestDto);
 }
